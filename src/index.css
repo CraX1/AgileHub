@@ -5,7 +5,7 @@
 @layer components {
   html {
     /* Set the base font family */
-    font-family: "Inter", sans-serif;
+    font-family: "system-ui", "Inter", sans-serif;
   }
 
   body {
