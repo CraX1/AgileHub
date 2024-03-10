@@ -1,34 +1,26 @@
 import React, { useState } from "react";
-import write from "../../assets/write.png";
-import officeNEW from "../../assets/boss-8595688_1280.png";
 
 import GoogleIcon from "../../assets/icon-svgs/GoogleIcon";
 import FacebookIcon from "../../assets/icon-svgs/FacebookIcon";
-import LoginForm from "./LoginForm";
+import LoginForm from "./Helper/LoginForm";
+import BrandIcon from "./Helper/BrandIcon";
+import SideSection from "./Helper/SideSection";
+import { socialMediaOptionWrapper } from "./Helper/Helper";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [inputEmailFocus, setInputEmailFocus] = useState<boolean>(false);
   const [inputPasswordFocus, setInputPasswordFocus] = useState<boolean>(false);
 
-  const socialMediaOptionWrapper = (platformIcon: any, platform: string) => (
-    <p className="flex gap-2 items-center flex-grow  border border-solid rounded-md border-gray-200 px-12 py-3">
-      {platformIcon}
-      {platform}
-    </p>
-  );
+  const [emailInput, setEmailInput] = useState<string>("");
+  const [passwordInput, setPasswordInput] = useState<string>("");
 
   return (
     <div className="h-screen grid grid-cols-2 ">
-      {/* left section */}
       <div className="flex items-center justify-center">
         <div className="space-y-7">
-          <div className="flex items-center">
-            <img src={write} width={40} className="object-contain" alt="" />
-            <p className="text-2xl font-bold">
-              <span className=" text-agile_blue ">AgileHub</span>
-            </p>
-          </div>
+          <BrandIcon />
 
           <div className="space-y-2">
             <p className="text-3xl font-bold">Log in to your Account</p>
@@ -59,6 +51,10 @@ const Login = () => {
               isPasswordVisible={passwordVisible}
               inputType="email"
               inputPlaceholder="Email"
+              setInputCallback={(e) => {
+                setEmailInput(e.target.value);
+              }}
+              inputValue={emailInput}
             />
             <LoginForm
               inputFocus={inputPasswordFocus}
@@ -71,6 +67,11 @@ const Login = () => {
               }
               inputType={passwordVisible ? "text" : "password"}
               inputPlaceholder="Password"
+              setInputCallback={(e) => {
+                console.log("assasas", e.target.value);
+                setPasswordInput(e.target.value);
+              }}
+              inputValue={passwordInput}
             />
           </div>
 
@@ -80,32 +81,18 @@ const Login = () => {
             </button>
             <p className="text-sm text-center text-gray-500">
               Don't have an account?{" "}
-              <span className="text-agile_blue font-semibold cursor-pointer">
+              <Link
+                to="/signup"
+                className="text-agile_blue font-semibold cursor-pointer"
+              >
                 Create an account
-              </span>
+              </Link>
             </p>
           </div>
         </div>
       </div>
 
-      {/* right section */}
-      <div className="bg-agile_blue">
-        <div
-          className=" my-16 bg-center bg-contain bg-no-repeat"
-          style={{
-            backgroundImage: `url(${officeNEW})`,
-            width: "100%",
-            height: "50%",
-          }}
-        ></div>
-        <p className="text-center text-3xl font-bold text-white pt-4 pb-3">
-          Track Progress
-        </p>
-        <p className="text-center text-md px-12 text-white">
-          Plan, track, and execute your projects with ease. Break down tasks,
-          set priorities, and keep your team aligned towards your project goals.
-        </p>
-      </div>
+      <SideSection />
     </div>
   );
 };

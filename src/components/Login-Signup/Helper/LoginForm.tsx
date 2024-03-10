@@ -1,7 +1,7 @@
-import React from "react";
-import MailIcon from "../../assets/icon-svgs/MailIcon";
-import EyePassword from "../../assets/icon-svgs/EyePassword";
-import LockIcon from "../../assets/icon-svgs/LockIcon";
+import React, { ChangeEvent } from "react";
+import MailIcon from "../../../assets/icon-svgs/MailIcon";
+import EyePassword from "../../../assets/icon-svgs/EyePassword";
+import LockIcon from "../../../assets/icon-svgs/LockIcon";
 
 const LoginForm = ({
   inputFocus,
@@ -12,6 +12,8 @@ const LoginForm = ({
   isPasswordInput,
   inputPlaceholder,
   inputType,
+  setInputCallback,
+  inputValue,
 }: {
   inputFocus: boolean;
   isPasswordVisible: boolean;
@@ -21,6 +23,8 @@ const LoginForm = ({
   setInputFocusCallback: () => void;
   setInputBlurCallback: () => void;
   setPaswordVisibilityCallback?: () => void;
+  setInputCallback?: (e: ChangeEvent<HTMLInputElement>) => void;
+  inputValue: string;
 }) => {
   return (
     <p
@@ -31,9 +35,11 @@ const LoginForm = ({
       <input
         onFocus={setInputFocusCallback}
         onBlur={setInputBlurCallback}
-        className="w-full outline-none text-sm px-2 focus:bg-white"
+        className="w-full outline-none text-sm px-2"
         type={inputType}
+        onChange={setInputCallback}
         placeholder={inputPlaceholder}
+        value={inputValue}
       />
       {isPasswordInput && (
         <button onClick={setPaswordVisibilityCallback}>
@@ -44,4 +50,4 @@ const LoginForm = ({
   );
 };
 
-export default LoginForm;
+export default React.memo(LoginForm);
