@@ -7,6 +7,7 @@ import BrandIcon from "./Helper/BrandIcon";
 import SideSection from "./Helper/SideSection";
 import { socialMediaOptionWrapper } from "./Helper/Helper";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
@@ -15,6 +16,16 @@ const Login = () => {
 
   const [emailInput, setEmailInput] = useState<string>("");
   const [passwordInput, setPasswordInput] = useState<string>("");
+
+  const handleLogin = () => {
+    axios
+      .post("http://127.0.0.1:8000/api/v1/user/login", {
+        emailInput,
+        passwordInput,
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="h-screen grid grid-cols-2 ">
@@ -76,7 +87,10 @@ const Login = () => {
           </div>
 
           <div className="flex flex-col space-y-8">
-            <button className="bg-agile_blue py-2 text-white rounded-md">
+            <button
+              onClick={handleLogin}
+              className="bg-agile_blue py-2 text-white rounded-md"
+            >
               Log in
             </button>
             <p className="text-sm text-center text-gray-500">
