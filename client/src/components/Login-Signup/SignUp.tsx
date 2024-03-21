@@ -10,12 +10,22 @@ import SideSection from "./Helper/SideSection";
 import { socialMediaOptionWrapper } from "./Helper/Helper";
 import EyePassword from "../../assets/icon-svgs/EyePassword";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const SignUp = () => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 
   const [emailInput, setEmailInput] = useState<string>("");
   const [passwordInput, setPasswordInput] = useState<string>("");
+  const createUserHandler = () => {
+    axios
+      .post("http://127.0.0.1:8000/api/v1/user/signUp", {
+        email: emailInput,
+        password: passwordInput,
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="h-screen grid grid-cols-2 ">
@@ -68,7 +78,10 @@ const SignUp = () => {
           </div>
 
           <div className="flex flex-col space-y-8">
-            <button className="bg-agile_blue py-2 text-white rounded-md">
+            <button
+              onClick={createUserHandler}
+              className="bg-agile_blue py-2 text-white rounded-md"
+            >
               Sign up
             </button>
             <p className="text-sm text-center text-gray-500">
