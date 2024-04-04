@@ -8,9 +8,6 @@ module.exports = {
           // DEFAULT: "#065ad8",
           DEFAULT: "#1c5470",
         },
-        agile_gray: {
-          DEFAULT: "#6b7280",
-        },
       },
     },
   },
