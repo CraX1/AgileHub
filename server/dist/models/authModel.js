@@ -28,8 +28,8 @@ const userSchema = new mongoose_1.default.Schema({
     password: {
         type: String,
         required: [true, "User must have a password"],
-        maxLength: [40, "The password must have less or equal than 40 characters"],
-        minLength: [7, "The password must have more or equal to 10 characters"],
+        maxLength: [40, "The password must have less or equal to 40 characters"],
+        minLength: [8, "The password must have more or equal to 8 characters"],
     },
     createdAt: {
         type: Date,
