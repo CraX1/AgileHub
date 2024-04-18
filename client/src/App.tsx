@@ -1,14 +1,20 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Login from "./components/Login-Signup/Login";
 import SignUp from "./components/Login-Signup/SignUp";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/" element={<Navigate to="/login" replace />} /> {/*Note 1*/}
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        {/*Note 1*/}
+      </Routes>
+      <ToastContainer position="bottom-left" className={"text-sm"} />
+    </>
   );
 }
 
