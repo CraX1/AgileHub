@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: [true, "User must have a password"],
+    // required: [true, "User must have a password"],
     maxLength: [40, "The password must have less or equal to 40 characters"],
     minLength: [8, "The password must have more or equal to 8 characters"],
   },
@@ -21,11 +21,18 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  provider: {
+    type: String,
+    required: [true, "Please specify a provide"],
+  },
+  token: {
+    type: String,
+  },
 });
 
 userSchema.pre("save", async function () {
   // NOTE-1
-  this.password = await bcrypt.hash(this.password, 12);
+  if (this.password) this.password = await bcrypt.hash(this.password, 12);
 });
 
 export const Users = mongoose.model("Users", userSchema);

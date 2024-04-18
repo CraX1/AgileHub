@@ -2,10 +2,11 @@ import { Users } from "../models/authModel";
 import { createSecretToken } from "../utils/SecretToken";
 import bcrypt from "bcrypt";
 import { isValidEmail, isValidPassword } from "../utils/inputValidation";
+import { OAuth2Client } from "google-auth-library";
 
 export const createUser = async (req: any, res: any) => {
   try {
-    const { email, password, username } = req.body;
+    const { email, password, username, provider } = req.body;
 
     if (!email || !password || !username) {
       return res.json({ error: "All fields are required" });
@@ -47,9 +48,10 @@ export const createUser = async (req: any, res: any) => {
     res.status(201).json({
       success: true,
       message: `Created user with email, ${email}`,
-      data: {
+      user: {
         email,
-        // username
+        provider,
+        username,
       },
     });
   } catch (err) {
@@ -74,8 +76,13 @@ export const loginUser = async (req: any, res: any) => {
         .status(404)
         .json({ message: "User does not exist with this email" });
     }
-
-    const auth = await bcrypt.compare(password, user.password);
+    if (user.provider === "google") {
+      return res.status(404).json({
+        message:
+          "User was created using Google Sign up. Please use Google Sign in",
+      });
+    }
+    const auth = await bcrypt.compare(password, user.password || "");
     if (!auth) {
       return res
         .status(401)
@@ -91,16 +98,71 @@ export const loginUser = async (req: any, res: any) => {
     });
     res.status(200).json({
       status: "success",
-      message: `Logged in user with email, ${email}`,
-      data: {
-        email,
+      message: `Logged in user with email, ${user.email}`,
+      user: {
+        email: user.email,
         username: user.username,
+        provider: user.provider,
       },
     });
   } catch (err) {
     res.status(500).json({
       success: false,
       error: `Reason: ${err}`,
+    });
+  }
+};
+
+export const googleLogin = async (req: any, res: any) => {
+  const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+
+  const { idToken, provider } = req.body;
+  console.log("Provider", provider);
+
+  try {
+    const ticket = await client.verifyIdToken({
+      idToken,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+    const payload = ticket.getPayload();
+    console.log("payload", payload);
+
+    let user = await Users.findOne({ email: payload?.email });
+
+    if (!user) {
+      console.log("userrrr");
+      user = await Users.create({
+        username: payload?.name,
+        email: payload?.email,
+        picture: payload?.picture,
+        provider,
+      });
+      console.log("USSSSSSS", user);
+    }
+
+    console.log("user", user);
+    const jwtToken = createSecretToken(user._id);
+    res.cookie("token", jwtToken, {
+      httpOnly: true, //Note 2
+      withCredentials: true,
+      // secure:true,//if using https
+      sameSite: "strict",
+      maxAge: 259200,
+    });
+    res.status(200).json({
+      status: "success",
+      message: `Logged in user with email, ${user.email}`,
+      user: {
+        email: user.email,
+        username: user.username,
+        provider: user.provider,
+      },
+    });
+  } catch (err) {
+    console.log("err", err);
+    res.status(500).json({
+      success: false,
+      error: `Reasondasdasd: ${err}`,
     });
   }
 };
@@ -114,3 +176,25 @@ export const loginUser = async (req: any, res: any) => {
 // running in the browser. This means that even if a cross-site scripting (XSS) vulnerability exists on the website, and a malicious script is injected and
 // executed in the user's browser, the script will not be able to access or manipulate the cookie marked as httpOnly.
 // The withCredentials option is set to true to allow the cookie to be sent with cross-origin requests
+
+// NOTE 3: Google OAuth
+// The OAuth2Client class from the google-auth-library provides the functionality to verify the Google ID token.
+
+// const client = new OAuth2Client(CLIENT_ID);
+// => Here, we create a new instance of the OAuth2Client and pass the CLIENT_ID as a parameter.
+// => The CLIENT_ID is the OAuth 2.0 Client ID that you obtained earlier during the Google Sign-In API setup process.
+// => Inside the try block, we use the verifyIdToken method of the OAuth2Client instance to verify the Google ID token.
+// => We pass the idToken and the CLIENT_ID as parameters. The verifyIdToken method returns a ticket object, which contains the verified payload of the ID token.
+
+// User.findOneAndUpdate(): This is a Mongoose method that performs a combination of finding a document and updating it in a single atomic operation.
+// => It's useful when you want to update a document if it exists, or create a new document if it doesn't.
+
+// { email: payload.email }: This is the query object, which specifies the criteria to find the document.
+// => In this case, we're looking for a document where the email field matches the email value from the payload object.
+
+// { name: payload.name, email: payload.email }: This is the update object, which specifies the fields to be updated on the document.
+// => In this case, we're updating the name, and email fields with the corresponding values from the payload object.
+
+// { upsert: true, new: true }: These are options for the findOneAndUpdate operation:
+// upsert: true: If a document is not found that matches the query, a new document will be created with the specified update data.
+// new: true: This option ensures that the updated document is returned, rather than the original document.

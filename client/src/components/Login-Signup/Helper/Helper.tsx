@@ -1,8 +1,33 @@
+declare global {
+  interface Window {
+    google: {
+      accounts: {
+        id: {
+          cancel: any;
+          initialize: (options: {
+            client_id: string;
+            callback: (response: any) => void;
+            [key: string]: any;
+          }) => void;
+          renderButton: (
+            parent: HTMLElement,
+            options: {
+              type: string;
+              size?: string;
+              [key: string]: any;
+            }
+          ) => void;
+        };
+      };
+    };
+  }
+}
+
 export const socialMediaOptionWrapper = (
   platformIcon: any,
   platform: string
 ) => (
-  <p className="flex gap-2 items-center flex-grow  border border-solid rounded-md border-gray-200 px-12 py-3 cursor-pointer">
+  <p className="flex gap-2 justify-center items-center flex-grow border border-solid rounded-md border-gray-200 px-12 py-3 cursor-pointer">
     {platformIcon}
     {platform}
   </p>

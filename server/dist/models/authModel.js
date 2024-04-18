@@ -27,7 +27,7 @@ const userSchema = new mongoose_1.default.Schema({
     },
     password: {
         type: String,
-        required: [true, "User must have a password"],
+        // required: [true, "User must have a password"],
         maxLength: [40, "The password must have less or equal to 40 characters"],
         minLength: [8, "The password must have more or equal to 8 characters"],
     },
@@ -35,11 +35,19 @@ const userSchema = new mongoose_1.default.Schema({
         type: Date,
         default: Date.now(),
     },
+    provider: {
+        type: String,
+        required: [true, "Please specify a provide"],
+    },
+    token: {
+        type: String,
+    },
 });
 userSchema.pre("save", function () {
     return __awaiter(this, void 0, void 0, function* () {
         // NOTE-1
-        this.password = yield bcrypt_1.default.hash(this.password, 12);
+        if (this.password)
+            this.password = yield bcrypt_1.default.hash(this.password, 12);
     });
 });
 exports.Users = mongoose_1.default.model("Users", userSchema);

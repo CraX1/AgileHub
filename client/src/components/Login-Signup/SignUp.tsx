@@ -12,11 +12,13 @@ const SignUp = () => {
     passwordInput: string,
     username: string
   ) => {
+    setLoading(true);
     axios
       .post("http://127.0.0.1:8000/api/v1/user/signUp", {
         username,
         email: emailInput,
         password: passwordInput,
+        provider: "website",
       })
       .then((res) => {
         const toastOptions: CustomToastOptions = {
@@ -26,7 +28,7 @@ const SignUp = () => {
           },
         };
         toast.success("Signed up successfully!", toastOptions);
-        console.log(res);
+        setLoading(false);
       })
       .catch((err: any) => {
         console.log(err);

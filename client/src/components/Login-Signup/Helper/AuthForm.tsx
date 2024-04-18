@@ -1,19 +1,14 @@
 import { useState } from "react";
-import {
-  emailRegexValidation,
-  passwordRegexValidation,
-  socialMediaOptionWrapper,
-} from "./Helper";
+import { emailRegexValidation, passwordRegexValidation } from "./Helper";
 import MailIcon from "../../../assets/icon-svgs/MailIcon";
 import LockIcon from "../../../assets/icon-svgs/LockIcon";
 import EyePassword from "../../../assets/icon-svgs/EyePassword";
 import { Link } from "react-router-dom";
 import SideSection from "./SideSection";
 import BrandIcon from "./BrandIcon";
-import GoogleIcon from "../../../assets/icon-svgs/GoogleIcon";
-import FacebookIcon from "../../../assets/icon-svgs/FacebookIcon";
 import TickIcon from "../../../assets/icon-svgs/TickIcon";
 import UserIcon from "../../../assets/icon-svgs/UserIcon";
+import GoogleLoginButton from "./GoogleLoginButton";
 
 const AuthForm = ({
   handleAuthentication,
@@ -66,21 +61,25 @@ const AuthForm = ({
     setPasswordValidity(passwordRegexValidation(passwordInput));
   };
 
-  const handleUsernameInputChange = (e: any) => {
+  const handleUsernameInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setUsernameInput(e.target.value);
   };
 
-  const handleEmailInputChange = (e: any) => {
+  const handleEmailInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmailInput(e.target.value);
   };
 
-  const handlePasswordInputChange = (e: any) => {
+  const handlePasswordInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setPasswordInput(e.target.value);
   };
   return (
     <div className="h-screen grid grid-cols-2 ">
       <div className="flex items-center justify-center">
-        <div className="space-y-7">
+        <div className="space-y-7 min-w-[350px]">
           <BrandIcon />
 
           <div className="space-y-2">
@@ -94,9 +93,9 @@ const AuthForm = ({
             </p>
           </div>
 
-          <div className="flex gap-4 font-semibold">
-            {socialMediaOptionWrapper(<GoogleIcon />, "Google")}
-            {socialMediaOptionWrapper(<FacebookIcon />, "Facebook")}
+          <div className="flex justify-center font-semibold">
+            <GoogleLoginButton isLogin={isLogin} />
+            {/* <div>{socialMediaOptionWrapper(<FacebookIcon />, "Facebook")}</div> */}
           </div>
 
           <div className="flex items-center">

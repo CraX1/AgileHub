@@ -14,7 +14,7 @@ const Login = () => {
         email: emailInput,
         password: passwordInput,
       })
-      .then((res) => {
+      .then((res: any) => {
         const toastOptions: CustomToastOptions = {
           style: {
             "--toastify-color-progress-success": "#1c5470",
