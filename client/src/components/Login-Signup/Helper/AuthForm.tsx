@@ -48,33 +48,34 @@ const AuthForm = ({
 
   const handleUsernameBlur = () => {
     setInputUsernameFocus(false);
-    setUsernameValidity(usernameInput.length > 0);
   };
 
   const handleEmailBlur = () => {
     setInputEmailFocus(false);
-    setEmailValidity(emailRegexValidation(emailInput));
   };
 
   const handlePasswordBlur = () => {
     setInputPasswordFocus(false);
-    setPasswordValidity(passwordRegexValidation(passwordInput));
   };
 
   const handleUsernameInputChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setUsernameInput(e.target.value);
+    !usernameValid && setUsernameValidity(e.target.value.length > 0);
   };
 
   const handleEmailInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmailInput(e.target.value);
+    !emailValid && setEmailValidity(emailRegexValidation(e.target.value));
   };
 
   const handlePasswordInputChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setPasswordInput(e.target.value);
+    !passwordValid &&
+      setPasswordValidity(passwordRegexValidation(e.target.value));
   };
   return (
     <div className="h-screen grid grid-cols-2 ">
@@ -112,11 +113,17 @@ const AuthForm = ({
                 <p
                   className={`flex items-center border border-solid ${
                     usernameValid ? "" : "border-agile_red"
-                  } rounded-md px-4 py-2 ${!inputUsernameFocus ? "" : ""}`}
+                  } rounded-md px-4 py-2 ${
+                    !inputUsernameFocus
+                      ? ""
+                      : "border-agile_gray border-agile_sm"
+                  }`}
                 >
                   <UserIcon />
                   <input
-                    onFocus={() => setInputUsernameFocus(true)}
+                    onFocus={() => {
+                      setInputUsernameFocus(true);
+                    }}
                     onBlur={handleUsernameBlur}
                     className="w-full outline-none text-sm px-2"
                     onChange={handleUsernameInputChange}
@@ -135,7 +142,9 @@ const AuthForm = ({
               <p
                 className={`flex items-center border border-solid ${
                   emailValid ? "" : "border-agile_red"
-                } rounded-md px-4 py-2 ${!inputEmailFocus ? "" : ""}`}
+                } rounded-md px-4 py-2 ${
+                  !inputEmailFocus ? "" : "border-agile_gray border-agile_sm"
+                }`}
               >
                 <MailIcon />
                 <input
@@ -155,11 +164,14 @@ const AuthForm = ({
               <p
                 className={`flex items-center border border-solid  ${
                   passwordValid ? "" : "border-agile_red"
-                } rounded-md px-4 py-2 ${!inputPasswordFocus ? "" : ""}`}
+                } rounded-md px-4 py-2 ${
+                  !inputPasswordFocus ? "" : "border-agile_gray border-agile_sm"
+                }`}
               >
                 <LockIcon />
                 <input
                   onBlur={handlePasswordBlur}
+                  onFocus={() => setInputPasswordFocus(true)}
                   className="w-full outline-none text-sm px-2"
                   onChange={handlePasswordInputChange}
                   type={passwordVisible ? "text" : "password"}
@@ -171,7 +183,7 @@ const AuthForm = ({
                 </button>
               </p>
               {!passwordValid && (
-                <div className="flex flex-col gap-1 text-xs bg-agile_gray text-white shadow-md rounded p-2 mt-1">
+                <div className="flex flex-col gap-1 text-xs bg-agile_dark_gray text-white shadow-md rounded p-2 mt-1">
                   <p className="gap-1 flex items-center">
                     <TickIcon isCompleted={passwordInput.length >= 8} />
                     <span>Atleast 8 characters long</span>
