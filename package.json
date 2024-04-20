@@ -1,5 +1,5 @@
 {
-  "name": "agile-hub",
+  "name": "expensify",
   "version": "1.0.0",
   "description": "Monorepo",
   "scripts": {
@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CraX1/AgileHub.git"
+    "url": "git+https://github.com/CraX1/Expensify.git"
   },
   "author": "Raj Singh",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CraX1/AgileHub/issues"
+    "url": "https://github.com/CraX1/Expensify/issues"
   },
-  "homepage": "https://github.com/CraX1/AgileHub#readme"
+  "homepage": "https://github.com/CraX1/Expensify#readme"
 }
