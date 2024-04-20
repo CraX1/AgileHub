@@ -112,11 +112,9 @@ const AuthForm = ({
               <div className="flex flex-col">
                 <p
                   className={`flex items-center border border-solid ${
-                    usernameValid ? "" : "border-agile_red"
+                    usernameValid ? "" : "border-exp_red"
                   } rounded-md px-4 py-2 ${
-                    !inputUsernameFocus
-                      ? ""
-                      : "border-agile_gray border-agile_sm"
+                    !inputUsernameFocus ? "" : "border-exp_gray border-exp_sm"
                   }`}
                 >
                   <UserIcon />
@@ -132,7 +130,7 @@ const AuthForm = ({
                   />
                 </p>
                 {!usernameValid && (
-                  <span className="text-xs text-agile_red">
+                  <span className="text-xs text-exp_red">
                     Username must not be empty
                   </span>
                 )}
@@ -141,9 +139,9 @@ const AuthForm = ({
             <div className="flex flex-col">
               <p
                 className={`flex items-center border border-solid ${
-                  emailValid ? "" : "border-agile_red"
+                  emailValid ? "" : "border-exp_red"
                 } rounded-md px-4 py-2 ${
-                  !inputEmailFocus ? "" : "border-agile_gray border-agile_sm"
+                  !inputEmailFocus ? "" : "border-exp_gray border-exp_sm"
                 }`}
               >
                 <MailIcon />
@@ -157,15 +155,15 @@ const AuthForm = ({
                 />
               </p>
               {!emailValid && (
-                <span className="text-xs text-agile_red">Invalid Email</span>
+                <span className="text-xs text-exp_red">Invalid Email</span>
               )}
             </div>
             <div className="flex flex-col">
               <p
                 className={`flex items-center border border-solid  ${
-                  passwordValid ? "" : "border-agile_red"
+                  passwordValid ? "" : "border-exp_red"
                 } rounded-md px-4 py-2 ${
-                  !inputPasswordFocus ? "" : "border-agile_gray border-agile_sm"
+                  !inputPasswordFocus ? "" : "border-exp_gray border-exp_sm"
                 }`}
               >
                 <LockIcon />
@@ -183,7 +181,7 @@ const AuthForm = ({
                 </button>
               </p>
               {!passwordValid && (
-                <div className="flex flex-col gap-1 text-xs bg-agile_dark_gray text-white shadow-md rounded p-2 mt-1">
+                <div className="flex flex-col gap-1 text-xs bg-exp_dark_gray text-white shadow-md rounded p-2 mt-1">
                   <p className="gap-1 flex items-center">
                     <TickIcon isCompleted={passwordInput.length >= 8} />
                     <span>Atleast 8 characters long</span>
@@ -220,7 +218,7 @@ const AuthForm = ({
           <div className="flex flex-col space-y-8">
             <button
               onClick={handleSubmit}
-              className="bg-agile_blue py-2 text-white rounded-md"
+              className="bg-exp_blue py-2 text-white rounded-md"
             >
               {loginText}
             </button>
@@ -231,7 +229,7 @@ const AuthForm = ({
 
               <Link
                 to={isLogin ? "/signup" : "/login"}
-                className="text-agile_blue font-semibold cursor-pointer"
+                className="text-exp_blue font-semibold cursor-pointer"
               >
                 {isLogin ? "Create an account" : "Login"}
               </Link>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import agileImage from "../../../assets/boss-8595688_1280.png";
+import expImage from "../../../assets/boss-8595688_1280.png";
 
 const SideSection = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -24,11 +24,11 @@ const SideSection = () => {
   }, [sections.length]);
 
   return (
-    <div className="bg-agile_blue relative">
+    <div className="bg-exp_blue relative">
       <div
         className="my-16 bg-center bg-contain bg-no-repeat"
         style={{
-          backgroundImage: `url(${agileImage})`,
+          backgroundImage: `url(${expImage})`,
           width: "100%",
           height: "50%",
         }}
@@ -38,7 +38,7 @@ const SideSection = () => {
           <span
             key={index}
             className={`inline-block mx-1 w-2 h-2 rounded-full cursor-pointer ${
-              index === activeIndex ? "bg-white" : " bg-agile_gray"
+              index === activeIndex ? "bg-white" : " bg-exp_gray"
             }`}
             onClick={() => setActiveIndex(index)}
           />
