@@ -5,8 +5,8 @@ const BrandIcon = () => {
   return (
     <div className="flex items-center">
       <img src={brandIcon} width={40} className="object-contain" alt="" />
-      <p className="text-2xl font-bold">
-        <span className=" text-agile_blue ">AgileHub</span>
+      <p className="font-bold text-4xl font-agile_brand_font">
+        <span className=" text-agile_blue">Expensify</span>
       </p>
     </div>
   );

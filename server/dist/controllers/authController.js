@@ -132,15 +132,7 @@ const googleLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         });
         const payload = ticket.getPayload();
         console.log("payload", payload);
-        let user = yield authModel_1.Users.findOne({ email: payload === null || payload === void 0 ? void 0 : payload.email }
-        // {
-        //   username: payload?.name,
-        //   email: payload?.email,
-        //   picture: payload?.picture,
-        //   provider,
-        // },
-        // { upsert: true, new: true }
-        );
+        let user = yield authModel_1.Users.findOne({ email: payload === null || payload === void 0 ? void 0 : payload.email });
         if (!user) {
             console.log("userrrr");
             user = yield authModel_1.Users.create({
