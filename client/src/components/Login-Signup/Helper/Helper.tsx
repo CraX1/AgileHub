@@ -27,7 +27,7 @@ export const socialMediaOptionWrapper = (
   platformIcon: any,
   platform: string
 ) => (
-  <p className="flex gap-2 justify-center items-center flex-grow border border-solid rounded-md border-gray-200 px-12 py-3 cursor-pointer hover:bg-exp_light_blue hover:border-exp_light_blue-border transition-colors">
+  <p className="flex gap-2 justify-center items-center flex-grow border border-solid rounded-md border-gray-200 px-12 py-3 cursor-pointer hover:bg-proj_light_blue hover:border-proj_light_blue-border transition-colors">
     {platformIcon}
     {platform}
   </p>

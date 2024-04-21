@@ -1,5 +1,5 @@
 {
-  "name": "expensify",
+  "name": "projile",
   "version": "1.0.0",
   "description": "Monorepo",
   "scripts": {
@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CraX1/Expensify.git"
+    "url": "git+https://github.com/CraX1/Projile.git"
   },
   "author": "Raj Singh",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CraX1/Expensify/issues"
+    "url": "https://github.com/CraX1/Projile/issues"
   },
-  "homepage": "https://github.com/CraX1/Expensify#readme"
+  "homepage": "https://github.com/CraX1/Projile#readme"
 }

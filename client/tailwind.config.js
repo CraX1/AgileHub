@@ -4,29 +4,29 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        exp_brand_font: "Caveat",
+        proj_brand_font: "Caveat",
       },
       colors: {
-        exp_blue: {
+        proj_blue: {
           // DEFAULT: "#065ad8",
           DEFAULT: "#1c5470",
         },
-        exp_dark_gray: {
+        proj_dark_gray: {
           DEFAULT: "#6b7280",
         },
-        exp_red: {
+        proj_red: {
           DEFAULT: "#b51818",
         },
-        exp_gray: {
+        proj_gray: {
           DEFAULT: "#a5a5a5",
         },
-        exp_light_blue: {
+        proj_light_blue: {
           DEFAULT: "#f5fbff",
           border: "#cedee8",
         },
       },
       borderWidth: {
-        exp_sm: "1.5px",
+        proj_sm: "1.5px",
       },
       keyframes: {
         enter: {
