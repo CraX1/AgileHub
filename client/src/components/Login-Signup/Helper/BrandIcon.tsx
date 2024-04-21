@@ -1,12 +1,12 @@
 import React from "react";
-import brandIcon from "../../../assets/write.png";
+import ProjileIcon from "../../../assets/icon-svgs/ProjileIcon";
 
 const BrandIcon = () => {
   return (
-    <div className="flex items-center">
-      <img src={brandIcon} width={40} className="object-contain" alt="" />
-      <p className="font-bold text-4xl font-exp_brand_font">
-        <span className=" text-exp_blue">Expensify</span>
+    <div className="flex gap-1.5 items-center">
+      <ProjileIcon />
+      <p className="font-bold text-4xl font-proj_brand_font">
+        <span className=" text-proj_blue">Projile</span>
       </p>
     </div>
   );

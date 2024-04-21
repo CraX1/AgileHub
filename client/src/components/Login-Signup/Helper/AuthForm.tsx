@@ -112,9 +112,9 @@ const AuthForm = ({
               <div className="flex flex-col">
                 <p
                   className={`flex items-center border border-solid ${
-                    usernameValid ? "" : "border-exp_red"
+                    usernameValid ? "" : "border-proj_red"
                   } rounded-md px-4 py-2 ${
-                    !inputUsernameFocus ? "" : "border-exp_gray border-exp_sm"
+                    !inputUsernameFocus ? "" : "border-proj_gray border-proj_sm"
                   }`}
                 >
                   <UserIcon />
@@ -130,7 +130,7 @@ const AuthForm = ({
                   />
                 </p>
                 {!usernameValid && (
-                  <span className="text-xs text-exp_red">
+                  <span className="text-xs text-proj_red">
                     Username must not be empty
                   </span>
                 )}
@@ -139,9 +139,9 @@ const AuthForm = ({
             <div className="flex flex-col">
               <p
                 className={`flex items-center border border-solid ${
-                  emailValid ? "" : "border-exp_red"
+                  emailValid ? "" : "border-proj_red"
                 } rounded-md px-4 py-2 ${
-                  !inputEmailFocus ? "" : "border-exp_gray border-exp_sm"
+                  !inputEmailFocus ? "" : "border-proj_gray border-proj_sm"
                 }`}
               >
                 <MailIcon />
@@ -155,15 +155,15 @@ const AuthForm = ({
                 />
               </p>
               {!emailValid && (
-                <span className="text-xs text-exp_red">Invalid Email</span>
+                <span className="text-xs text-proj_red">Invalid Email</span>
               )}
             </div>
             <div className="flex flex-col">
               <p
                 className={`flex items-center border border-solid  ${
-                  passwordValid ? "" : "border-exp_red"
+                  passwordValid ? "" : "border-proj_red"
                 } rounded-md px-4 py-2 ${
-                  !inputPasswordFocus ? "" : "border-exp_gray border-exp_sm"
+                  !inputPasswordFocus ? "" : "border-proj_gray border-proj_sm"
                 }`}
               >
                 <LockIcon />
@@ -181,7 +181,7 @@ const AuthForm = ({
                 </button>
               </p>
               {!passwordValid && (
-                <div className="flex flex-col gap-1 text-xs bg-exp_dark_gray text-white shadow-md rounded p-2 mt-1">
+                <div className="flex flex-col gap-1 text-xs bg-proj_dark_gray text-white shadow-md rounded p-2 mt-1">
                   <p className="gap-1 flex items-center">
                     <TickIcon isCompleted={passwordInput.length >= 8} />
                     <span>Atleast 8 characters long</span>
@@ -218,7 +218,7 @@ const AuthForm = ({
           <div className="flex flex-col space-y-8">
             <button
               onClick={handleSubmit}
-              className="bg-exp_blue py-2 text-white rounded-md"
+              className="bg-proj_blue py-2 text-white rounded-md"
             >
               {loginText}
             </button>
@@ -229,7 +229,7 @@ const AuthForm = ({
 
               <Link
                 to={isLogin ? "/signup" : "/login"}
-                className="text-exp_blue font-semibold cursor-pointer"
+                className="text-proj_blue font-semibold cursor-pointer"
               >
                 {isLogin ? "Create an account" : "Login"}
               </Link>

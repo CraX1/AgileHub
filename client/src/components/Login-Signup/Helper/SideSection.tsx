@@ -5,14 +5,19 @@ const SideSection = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const sections = [
     {
-      title: "Track Expenses",
+      title: "Streamline Your Workflow",
       content:
-        "Ditch the receipt chaos and let Expensify revolutionize your spending habits! Capture, categorize, and conquer your expenses with flair.",
+        "Projile empowers you to streamline your workflow and stay on top of your projects. Effortlessly track progress, assign tasks, and collaborate seamlessly with your team, all in one intuitive platform.",
     },
     {
-      title: "Bill-Splitting Bliss!",
+      title: "Agile Project Management",
       content:
-        "Dividing the dinner bill or splitting the grocery costs has never been easier! Say farewell to awkward calculations and messy disagreements. Our intuitive app effortlessly divides expenses among friends, family, or colleagues with just a few taps.",
+        "Embrace agility and adapt to changing priorities with Projile's flexible project management tools. Easily manage sprints, organize your backlog, and deliver projects on time and within scope.",
+    },
+    {
+      title: "Seamless Team Collaboration",
+      content:
+        "Harness the power of real-time collaboration with Projile. Share updates, exchange feedback, and ensure everyone is on the same page, no matter where they are. Seamless communication and transparency fuel your team's success.",
     },
   ];
 
@@ -24,7 +29,7 @@ const SideSection = () => {
   }, [sections.length]);
 
   return (
-    <div className="bg-exp_blue relative">
+    <div className="bg-proj_blue relative">
       <div
         className="my-16 bg-center bg-contain bg-no-repeat"
         style={{
@@ -38,7 +43,7 @@ const SideSection = () => {
           <span
             key={index}
             className={`inline-block mx-1 w-2 h-2 rounded-full cursor-pointer ${
-              index === activeIndex ? "bg-white" : " bg-exp_gray"
+              index === activeIndex ? "bg-white" : " bg-proj_gray"
             }`}
             onClick={() => setActiveIndex(index)}
           />
