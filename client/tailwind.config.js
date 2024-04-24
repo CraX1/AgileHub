@@ -8,21 +8,21 @@ module.exports = {
       },
       colors: {
         proj_blue: {
-          // DEFAULT: "#065ad8",
-          DEFAULT: "#1c5470",
-        },
-        proj_dark_gray: {
-          DEFAULT: "#6b7280",
+          // DEFAULT: "#032746",
+          DEFAULT: "#033346",
+          // active: "#176389",
+          active: "#00405a",
+          secondary: "#1c5470",
+          light: "#f5fbff",
+          lightBorder: "#cedee8",
         },
         proj_red: {
           DEFAULT: "#b51818",
         },
         proj_gray: {
           DEFAULT: "#a5a5a5",
-        },
-        proj_light_blue: {
-          DEFAULT: "#f5fbff",
-          border: "#cedee8",
+          light: "#7e93a0",
+          dark: "#6b7280",
         },
       },
       borderWidth: {
