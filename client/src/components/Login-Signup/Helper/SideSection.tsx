@@ -29,7 +29,7 @@ const SideSection = () => {
   }, [sections.length]);
 
   return (
-    <div className="bg-proj_blue relative">
+    <div className="bg-proj_blue-secondary relative">
       <div
         className="my-16 bg-center bg-contain bg-no-repeat"
         style={{

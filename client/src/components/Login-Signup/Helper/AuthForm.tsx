@@ -181,7 +181,7 @@ const AuthForm = ({
                 </button>
               </p>
               {!passwordValid && (
-                <div className="flex flex-col gap-1 text-xs bg-proj_dark_gray text-white shadow-md rounded p-2 mt-1">
+                <div className="flex flex-col gap-1 text-xs bg-proj_gray-dark text-white shadow-md rounded p-2 mt-1">
                   <p className="gap-1 flex items-center">
                     <TickIcon isCompleted={passwordInput.length >= 8} />
                     <span>Atleast 8 characters long</span>
@@ -218,7 +218,7 @@ const AuthForm = ({
           <div className="flex flex-col space-y-8">
             <button
               onClick={handleSubmit}
-              className="bg-proj_blue py-2 text-white rounded-md"
+              className="bg-proj_blue-secondary py-2 text-white rounded-md"
             >
               {loginText}
             </button>
@@ -229,7 +229,7 @@ const AuthForm = ({
 
               <Link
                 to={isLogin ? "/signup" : "/login"}
-                className="text-proj_blue font-semibold cursor-pointer"
+                className="text-proj_blue-secondary font-semibold cursor-pointer"
               >
                 {isLogin ? "Create an account" : "Login"}
               </Link>
