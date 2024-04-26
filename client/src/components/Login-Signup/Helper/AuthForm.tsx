@@ -84,7 +84,7 @@ const AuthForm = ({
           <BrandIcon />
 
           <div className="space-y-2">
-            <p className="text-3xl font-bold">
+            <p className="text-3xl font-bold text-proj_black">
               {isLogin ? "Log in to your Account" : "Create your Account"}
             </p>
             <p className=" text-gray-500">

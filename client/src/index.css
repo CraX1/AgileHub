@@ -12,4 +12,44 @@
     /* Apply Tailwind's box-border utility class to set box-sizing to border-box */
     @apply box-border;
   }
+
+  /* Define the scrollbar style */
+  .container::-webkit-scrollbar {
+    /* width: 6px;
+    height: 6px; */
+    display: none;
+  }
+  .container-scrollVisible::-webkit-scrollbar {
+    display: initial;
+    width: 6px;
+    height: 6px;
+  }
+
+  .container:hover::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    display: initial;
+  }
+
+  /* Define the thumb style */
+  .container::-webkit-scrollbar-thumb {
+    background: rgb(176, 175, 175, 0.6);
+    border-radius: 5px;
+  }
+
+  /* Define the track style */
+  .container::-webkit-scrollbar-track {
+    background-color: #f7f8fa;
+    /* border: 1px solid #ccc; */
+  }
+
+  /* Define the button style */
+  .container::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  /* Define the button style when being hovered over */
+  .container::-webkit-scrollbar-button:hover {
+    background-color: #999999;
+  }
 }

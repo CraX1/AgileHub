@@ -54,7 +54,7 @@ const Navbar = () => {
               to={item.path}
               key={item.path}
               className={({ isActive }) =>
-                `flex items-center gap-1.5 px-4 py-3 rounded-md text-proj_gray-light cursor-pointer ${
+                `flex items-center gap-1.5 px-4 py-2.5 rounded-md text-proj_gray-light cursor-pointer ${
                   isActive ? "bg-proj_blue-active text-white" : ""
                 } hover:text-white transition-all`
               }

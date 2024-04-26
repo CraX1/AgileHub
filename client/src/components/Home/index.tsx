@@ -9,7 +9,7 @@ import Navbar from "./Navbar";
 
 const Home = () => {
   return (
-    <div className="flex">
+    <div className="flex bg-proj_gray-secondary">
       <Navbar />
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
