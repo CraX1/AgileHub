@@ -15,14 +15,20 @@ module.exports = {
           secondary: "#1c5470",
           light: "#f5fbff",
           lightBorder: "#cedee8",
+          sky: "#0079b6",
         },
         proj_red: {
           DEFAULT: "#b51818",
         },
         proj_gray: {
           DEFAULT: "#a5a5a5",
+          secondary: "#f7f8fa",
           light: "#7e93a0",
+          lightBorder: "#eff0f2",
           dark: "#6b7280",
+        },
+        proj_black: {
+          DEFAULT: "#383838",
         },
       },
       borderWidth: {
@@ -41,6 +47,9 @@ module.exports = {
       animation: {
         enter: "enter 0.3s ease-out",
         leave: "leave 0.3s ease-in",
+      },
+      boxShadow: {
+        proj_box_shadow: "0 2px 3px #e5e7eb",
       },
     },
   },
